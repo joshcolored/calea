@@ -1,71 +1,63 @@
-# Calea Bacolod Landing Page
+# Calea Bacolod Landing Page (Static)
 
-A React + Vite + Tailwind CSS single-page showcase inspired by Calea Pastries & Coffee in Bacolod City.
+This project is a static, single-file landing page for **Calea Pastries & Coffee** in Bacolod City.
 
-## Description
+## Overview
 
-This project presents Calea's story, signature menu, guest experience, reviews, and location details in a responsive, animated layout with a mobile hamburger menu and smooth scrolling.
+The main page is [`index.html`](./index.html). It includes:
+- Full page HTML structure
+- Embedded CSS styling (inside a `<style>` block)
+- Embedded JavaScript interactions (inside a `<script>` block)
+- A local favicon reference (`favicon.ico`)
 
-## Tech Stack
+No build step is required to run the page.
 
-- React 18
-- Vite 5
-- Tailwind CSS 3
+## Main File
 
-## Features
+- `index.html` - Primary landing page and source of layout, styles, and behavior
+- `favicon.ico` - Browser tab icon used by `index.html`
+- `calea-bacolod.html` - Optional/legacy reference file
 
-- Responsive desktop/tablet/mobile layout
-- Mobile hamburger navigation
-- Smooth anchor scroll with fixed-nav offset
-- Scroll reveal (fade-up) animation using Intersection Observer
-- Stylized custom map section with Lacson Street and 15th Street details
+## Page Sections
 
-## Project Structure
+`index.html` includes these major sections:
+- Fixed top navigation with responsive mobile menu
+- Hero area
+- About strip
+- Story section
+- Signature menu cards
+- Experience/gallery grid
+- Reviews
+- Visit/location block with stylized map
+- Footer
 
-```text
-.
-├── src/
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── index.html
-├── tailwind.config.js
-├── postcss.config.js
-├── vite.config.js
-├── package.json
-└── calea-bacolod.html (legacy static file kept as reference)
-```
+## Interactions
 
-## Getting Started
+JavaScript in `index.html` provides:
+- Smooth scrolling to anchor links with fixed-nav offset
+- Intersection Observer based fade-up reveal animations
+- Mobile navigation toggle behavior
 
-1. Install dependencies:
+## How To Run
 
-```bash
-npm install
-```
+1. Open `index.html` directly in a browser, or
+2. Serve the folder with any local static server.
 
-2. Run development server:
-
-```bash
-npm run dev
-```
-
-3. Build for production:
+Example (if Node.js is installed):
 
 ```bash
-npm run build
+npx serve .
 ```
 
-4. Preview production build:
+Then open the local URL shown in your terminal.
 
-```bash
-npm run preview
-```
+## Customization Notes
 
-## Deploy (GitHub Pages Option)
-
-You can deploy the built `dist/` output to GitHub Pages using your preferred workflow (GitHub Actions or manual `dist` publish).
+- Update text/content directly in `index.html`.
+- Update design tokens in the `:root` CSS variables.
+- Update interactions in the bottom `<script>` block.
+- Replace `favicon.ico` to change the tab icon.
 
 ## License
 
-For personal and portfolio use unless you add your own license.
+Use for personal, educational, or portfolio projects unless you add a different license.
