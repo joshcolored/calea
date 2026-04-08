@@ -1,61 +1,71 @@
 # Calea Bacolod Landing Page
 
-A responsive, single-page showcase website inspired by Calea Pastries & Coffee in Bacolod City, featuring a custom hero, animated sections, mobile hamburger navigation, smooth scrolling, and a stylized location map.
+A React + Vite + Tailwind CSS single-page showcase inspired by Calea Pastries & Coffee in Bacolod City.
 
 ## Description
 
-This project is a handcrafted static HTML/CSS/JS page designed to present Calea's brand story, signature menu, guest experience, reviews, and location details in a warm editorial style.
+This project presents Calea's story, signature menu, guest experience, reviews, and location details in a responsive, animated layout with a mobile hamburger menu and smooth scrolling.
+
+## Tech Stack
+
+- React 18
+- Vite 5
+- Tailwind CSS 3
 
 ## Features
 
-- Responsive layout for desktop, tablet, and mobile
-- Mobile hamburger menu
-- Smooth anchor scrolling with fixed-nav offset
-- Scroll reveal/fade-up animations using Intersection Observer
-- Custom SVG illustrations (hero art, story visuals, and map section)
-- Single-file deployment (`calea-bacolod.html`)
+- Responsive desktop/tablet/mobile layout
+- Mobile hamburger navigation
+- Smooth anchor scroll with fixed-nav offset
+- Scroll reveal (fade-up) animation using Intersection Observer
+- Stylized custom map section with Lacson Street and 15th Street details
 
 ## Project Structure
 
 ```text
 .
-├── calea-bacolod.html
-└── README.md
+├── src/
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── tailwind.config.js
+├── postcss.config.js
+├── vite.config.js
+├── package.json
+└── calea-bacolod.html (legacy static file kept as reference)
 ```
 
-## Run Locally
+## Getting Started
 
-1. Open the project folder.
-2. Double-click `calea-bacolod.html`, or serve it with a local server.
+1. Install dependencies:
 
-Example using VS Code Live Server:
+```bash
+npm install
+```
 
-1. Right-click `calea-bacolod.html`
-2. Click `Open with Live Server`
+2. Run development server:
 
-## Deploy to GitHub Pages
+```bash
+npm run dev
+```
 
-1. Push this project to a GitHub repository.
-2. In GitHub, go to `Settings` > `Pages`.
-3. Under `Build and deployment`, set:
-   - `Source`: `Deploy from a branch`
-   - `Branch`: `main` (root)
-4. Save, then wait for GitHub Pages to publish.
+3. Build for production:
 
-If your file stays named `calea-bacolod.html`, visit:
+```bash
+npm run build
+```
 
-`https://YOUR_USERNAME.github.io/YOUR_REPO/calea-bacolod.html`
+4. Preview production build:
 
-If you rename it to `index.html`, your site opens directly at:
+```bash
+npm run preview
+```
 
-`https://YOUR_USERNAME.github.io/YOUR_REPO/`
+## Deploy (GitHub Pages Option)
 
-## Tech Stack
-
-- HTML5
-- CSS3
-- Vanilla JavaScript
+You can deploy the built `dist/` output to GitHub Pages using your preferred workflow (GitHub Actions or manual `dist` publish).
 
 ## License
 
-For personal/portfolio use unless you add your own project license.
+For personal and portfolio use unless you add your own license.
