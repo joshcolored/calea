@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calea Pastries & Coffee — Bacolod City</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #fdf6ec;
+      --warm-white: #fffdf8;
+      --chocolate: #3b1f0e;
+      --dark-choc: #1e0d04;
+      --mocha: #6b3d1e;
+      --caramel: #c4813a;
+      --gold: #d4a843;
+      --blush: #f0d5c0;
+      --dusty-rose: #d9a8a0;
+      --sage: #8a9e7c;
+      --text: #2a1406;
+      --text-light: #7a5a42;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(253,246,236,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,129,58,0.18);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--chocolate);
+      letter-spacing: 0.03em;
+    }
+    .nav-logo span { color: var(--caramel); font-style: italic; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-toggle {
+      display: none;
+      width: 2.6rem;
+      height: 2.6rem;
+      border: 1px solid rgba(196,129,58,0.3);
+      background: transparent;
+      color: var(--chocolate);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.32rem;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 1.1rem;
+      height: 2px;
+      background: currentColor;
+      transition: transform 0.25s, opacity 0.2s;
+      transform-origin: center;
+    }
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mocha);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--caramel); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-text-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem 5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--caramel);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 1px;
+      background: var(--caramel);
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--chocolate);
+      margin-bottom: 0.3rem;
+    }
+    .hero-title em {
+      display: block;
+      font-style: italic;
+      color: var(--caramel);
+    }
+    .hero-destination {
+      display: block;
+      margin-top: -0.2em;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--mocha);
+      margin: 1.2rem 0 2.2rem;
+      max-width: 26rem;
+      line-height: 1.6;
+    }
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--caramel);
+      border-left: 2px solid var(--caramel);
+      padding-left: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .cta-row { display: flex; gap: 1rem; align-items: center; }
+    .btn-primary {
+      background: var(--chocolate);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.95rem 2rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--mocha); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--chocolate);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.93rem 2rem;
+      border: 1.5px solid var(--chocolate);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.25s;
+    }
+    .btn-outline:hover { background: var(--chocolate); color: var(--cream); }
+
+    /* Hero right visual */
+    .hero-visual-side {
+      position: relative;
+      background: var(--chocolate);
+      overflow: hidden;
+    }
+    .hero-visual-side::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 30%, rgba(196,129,58,0.25) 0%, transparent 70%),
+                  radial-gradient(ellipse at 20% 80%, rgba(212,168,67,0.15) 0%, transparent 60%);
+    }
+    .hero-cake-svg {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(85%, 420px);
+      animation: floatUp 6s ease-in-out infinite;
+    }
+    @keyframes floatUp {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-18px); }
+    }
+    .hero-deco-text {
+      position: absolute;
+      bottom: 2rem; right: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.3);
+      writing-mode: vertical-rl;
+      letter-spacing: 0.1em;
+    }
+
+    /* ABOUT STRIP */
+    .about-strip {
+      background: var(--chocolate);
+      color: var(--cream);
+      padding: 3rem 5rem;
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-strip-stat {
+      text-align: center;
+      flex: 1;
+    }
+    .about-strip-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .about-strip-stat .label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-top: 0.4rem;
+    }
+    .about-strip-divider {
+      width: 1px;
+      height: 4rem;
+      background: rgba(255,255,255,0.15);
+    }
+    .about-strip-quote {
+      flex: 3;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--blush);
+    }
+
+    /* SECTION SHARED */
+    section { padding: 6rem 5rem; }
+    .section-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--caramel);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 2rem; height: 1px;
+      background: var(--caramel);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--chocolate);
+      line-height: 1.15;
+      max-width: 28rem;
+    }
+    .section-title em { font-style: italic; color: var(--caramel); }
+
+    /* OUR STORY */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    .story-text p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+    }
+    .story-text strong { color: var(--chocolate); font-weight: 500; }
+    .story-visual {
+      position: relative;
+      height: 480px;
+    }
+    .story-card {
+      position: absolute;
+      background: var(--warm-white);
+      border: 1px solid rgba(196,129,58,0.2);
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(59,31,14,0.1);
+    }
+    .story-card.main {
+      top: 0; left: 0; right: 4rem; bottom: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .story-card.accent {
+      bottom: 0; right: 0; width: 11rem; height: 11rem;
+      background: var(--chocolate);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.3rem;
+    }
+    .story-card.accent .big { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .story-card.accent .small { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-align: center; }
+
+    /* CAKE SVG IN STORY */
+    .story-cake-illustration {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* MENU */
+    .menu-section { background: var(--warm-white); }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .menu-card {
+      background: var(--cream);
+      border: 1px solid rgba(196,129,58,0.15);
+      padding: 2rem;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+      overflow: hidden;
+    }
+    .menu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--caramel), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s;
+    }
+    .menu-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(59,31,14,0.12); }
+    .menu-card:hover::before { transform: scaleX(1); }
+    .menu-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .menu-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--chocolate);
+      margin-bottom: 0.5rem;
+    }
+    .menu-card-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+    .menu-card-tag {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      background: var(--blush);
+      color: var(--mocha);
+      border-radius: 0;
+    }
+    .menu-card-tag.bestseller {
+      background: var(--chocolate);
+      color: var(--gold);
+    }
+
+    /* EXPERIENCE / GALLERY */
+    .experience-section { padding: 6rem 5rem; }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+    }
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 220px 220px;
+      gap: 1rem;
+    }
+    .exp-cell {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .exp-cell.tall { grid-row: 1 / 3; }
+    .exp-cell-inner {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-bg {
+      position: absolute; inset: 0;
+      transition: transform 0.5s;
+    }
+    .exp-cell:hover .exp-bg { transform: scale(1.06); }
+    .exp-label {
+      position: absolute;
+      bottom: 1rem; left: 1rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: white;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+      z-index: 2;
+    }
+    /* Illustrated bg for each cell */
+    .cell-1 { background: linear-gradient(135deg, #3b1f0e 30%, #6b3d1e); }
+    .cell-2 { background: linear-gradient(135deg, #c4813a, #d4a843); }
+    .cell-3 { background: linear-gradient(135deg, #f0d5c0, #d9a8a0); }
+    .cell-4 { background: linear-gradient(135deg, #8a9e7c, #5a7a56); }
+    .cell-5 { background: linear-gradient(135deg, #1e0d04, #3b1f0e); }
+    .exp-cell-pattern {
+      position: absolute; inset: 0;
+      opacity: 0.12;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* REVIEWS */
+    .reviews-section { background: var(--chocolate); padding: 6rem 5rem; }
+    .reviews-section .section-label { color: var(--gold); }
+    .reviews-section .section-label::before { background: var(--gold); }
+    .reviews-section .section-title { color: var(--cream); max-width: 20rem; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem;
+      transition: background 0.3s;
+    }
+    .review-card:hover { background: rgba(255,255,255,0.1); }
+    .review-stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 0.05em; }
+    .review-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--blush);
+      margin-bottom: 1.2rem;
+    }
+    .review-author {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* VISIT */
+    .visit-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 60vh;
+    }
+    .visit-info {
+      background: var(--blush);
+      padding: 6rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .visit-detail {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .visit-row {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .visit-icon {
+      width: 2rem; height: 2rem;
+      background: var(--chocolate);
+      color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .visit-row-text .label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mocha);
+      margin-bottom: 0.25rem;
+    }
+    .visit-row-text .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--chocolate);
+      line-height: 1.5;
+    }
+    .visit-map {
+      background: var(--chocolate);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .map-svg { width: 100%; height: 100%; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark-choc);
+      color: rgba(255,255,255,0.5);
+      padding: 2.5rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      font-style: italic;
+    }
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1200px) {
+      nav { padding: 1rem 2rem; }
+      section,
+      .experience-section,
+      .reviews-section,
+      .about-strip,
+      footer { padding-left: 2.5rem; padding-right: 2.5rem; }
+      .hero-text-side { padding: 8rem 3rem 4rem; }
+      .story-grid { gap: 2.5rem; }
+    }
+
+    @media (max-width: 960px) {
+      .nav-toggle { display: inline-flex; }
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(253,246,236,0.98);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(196,129,58,0.22);
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transition: max-height 0.3s ease, opacity 0.2s ease;
+      }
+      .nav-links li { border-top: 1px solid rgba(196,129,58,0.14); }
+      .nav-links a {
+        display: block;
+        padding: 0.9rem 2rem;
+      }
+      nav.menu-open .nav-links {
+        max-height: 24rem;
+        opacity: 1;
+        pointer-events: auto;
+      }
+      nav.menu-open .nav-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+      nav.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
+      nav.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+      }
+      .hero-text-side { padding: 6.8rem 2rem 3rem; }
+      .hero-visual-side {
+        min-height: 360px;
+        order: -1;
+      }
+      .hero-deco-text {
+        writing-mode: horizontal-tb;
+        right: auto;
+        left: 1rem;
+        bottom: 1rem;
+      }
+      .cta-row { flex-wrap: wrap; }
+      .about-strip {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+      }
+      .about-strip-stat {
+        flex: 1 1 calc(50% - 1rem);
+        min-width: 180px;
+      }
+      .about-strip-divider { display: none; }
+      .about-strip-quote {
+        flex: 1 1 100%;
+        font-size: 1.15rem;
+      }
+      section,
+      .experience-section,
+      .reviews-section { padding: 4.2rem 2rem; }
+      .story-grid,
+      .visit-section { grid-template-columns: 1fr; }
+      .story-visual {
+        height: auto;
+        min-height: 360px;
+      }
+      .story-card.main { right: 3rem; bottom: 3rem; }
+      .menu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .exp-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: 220px 220px 220px;
+      }
+      .exp-cell.tall {
+        grid-column: 1 / -1;
+        grid-row: auto;
+      }
+      .reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .visit-section { min-height: auto; }
+      .visit-info { padding: 4.2rem 2rem; }
+      .visit-map { min-height: 360px; }
+      footer {
+        flex-direction: column;
+        gap: 0.9rem;
+        text-align: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0.9rem 1rem; }
+      .nav-logo { font-size: 1.1rem; }
+      .hero-text-side { padding: 6rem 1.1rem 2.2rem; }
+      .hero-sub { font-size: 1.15rem; }
+      .hero-tagline { font-size: 1rem; }
+      .hero-destination { margin-top: -0.14em; }
+      .cta-row { width: 100%; }
+      .btn-primary,
+      .btn-outline {
+        width: 100%;
+        text-align: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      section,
+      .experience-section,
+      .reviews-section,
+      .about-strip,
+      .visit-info,
+      footer { padding-left: 1.1rem; padding-right: 1.1rem; }
+      .story-text p,
+      .review-text,
+      .menu-card-desc { font-size: 1rem; }
+      .story-visual {
+        min-height: 320px;
+      }
+      .story-card.main {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        min-height: 280px;
+      }
+      .story-card.accent {
+        width: 8.5rem;
+        height: 8.5rem;
+      }
+      .story-card.accent .big { font-size: 1.8rem; }
+      .menu-grid,
+      .reviews-grid,
+      .exp-grid { grid-template-columns: 1fr; }
+      .exp-grid { grid-template-rows: repeat(5, 220px); }
+      .visit-row-text .value { font-size: 1rem; }
+      .visit-map { min-height: 300px; }
+      .hero-deco-text { font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Calea <span>Pastries & Coffee</span></div>
+  <button class="nav-toggle" aria-label="Toggle navigation menu" aria-controls="nav-links" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-text-side">
+    <div class="hero-eyebrow">Est. Bacolod City, Negros Occidental</div>
+    <h1 class="hero-title">
+      Bacolod's<br>
+      <em>Sweetest</em>
+      <span class="hero-destination">Destination</span>
+    </h1>
+    <p class="hero-sub">
+      Handcrafted cakes, rich pastries, and warm coffee — the heart of the City of Smiles, one slice at a time.
+    </p>
+    <blockquote class="hero-tagline">
+      "Because Life is Sweeter in Bacolod"
+    </blockquote>
+    <div class="cta-row">
+      <a href="#menu" class="btn-primary">Explore the Menu</a>
+      <a href="#visit" class="btn-outline">Find Us</a>
+    </div>
+  </div>
+  <div class="hero-visual-side">
+    <!-- Illustrated cake SVG -->
+    <svg class="hero-cake-svg" viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
+      <!-- Cake plate -->
+      <ellipse cx="200" cy="370" rx="160" ry="22" fill="rgba(212,168,67,0.2)"/>
+      <!-- Cake base layer -->
+      <rect x="60" y="290" width="280" height="70" rx="8" fill="#6b3d1e"/>
+      <!-- Cake mid layer -->
+      <rect x="75" y="210" width="250" height="85" rx="8" fill="#7d4a24"/>
+      <!-- Cake top layer -->
+      <rect x="100" y="145" width="200" height="70" rx="8" fill="#8a5030"/>
+      <!-- Frosting drips on top layer -->
+      <path d="M100 155 Q120 140 140 155 Q160 140 180 155 Q200 140 220 155 Q240 140 260 155 Q280 140 300 155" fill="none" stroke="#f0d5c0" stroke-width="12" stroke-linecap="round"/>
+      <!-- Cream layers -->
+      <rect x="60" y="285" width="280" height="12" rx="4" fill="#f0d5c0" opacity="0.9"/>
+      <rect x="75" y="205" width="250" height="12" rx="4" fill="#f0d5c0" opacity="0.9"/>
+      <!-- Chocolate drips from top -->
+      <path d="M130 145 Q125 135 130 125 Q135 115 130 105" stroke="#3b1f0e" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <path d="M170 145 Q162 128 168 112" stroke="#3b1f0e" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M240 145 Q248 130 242 114" stroke="#3b1f0e" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M270 145 Q278 133 273 118" stroke="#3b1f0e" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <!-- Candles -->
+      <rect x="148" y="100" width="8" height="50" rx="2" fill="#d4a843"/>
+      <rect x="196" y="90" width="8" height="60" rx="2" fill="#c4813a"/>
+      <rect x="244" y="100" width="8" height="50" rx="2" fill="#d4a843"/>
+      <!-- Flames -->
+      <ellipse cx="152" cy="97" rx="6" ry="9" fill="#f97316" opacity="0.9"/>
+      <ellipse cx="152" cy="94" rx="3" ry="5" fill="#fde68a"/>
+      <ellipse cx="200" cy="87" rx="6" ry="9" fill="#f97316" opacity="0.9"/>
+      <ellipse cx="200" cy="84" rx="3" ry="5" fill="#fde68a"/>
+      <ellipse cx="248" cy="97" rx="6" ry="9" fill="#f97316" opacity="0.9"/>
+      <ellipse cx="248" cy="94" rx="3" ry="5" fill="#fde68a"/>
+      <!-- Decorative dots on cake -->
+      <circle cx="110" cy="325" r="5" fill="rgba(240,213,192,0.5)"/>
+      <circle cx="150" cy="335" r="4" fill="rgba(240,213,192,0.4)"/>
+      <circle cx="290" cy="320" r="6" fill="rgba(240,213,192,0.5)"/>
+      <!-- Scattered confetti shapes -->
+      <circle cx="50" cy="200" r="8" fill="rgba(196,129,58,0.3)"/>
+      <circle cx="350" cy="150" r="5" fill="rgba(212,168,67,0.3)"/>
+      <circle cx="380" cy="280" r="10" fill="rgba(196,129,58,0.2)"/>
+      <circle cx="20" cy="320" r="7" fill="rgba(212,168,67,0.25)"/>
+      <rect x="40" y="120" width="10" height="10" rx="2" fill="rgba(240,213,192,0.2)" transform="rotate(30 45 125)"/>
+      <rect x="360" y="230" width="12" height="12" rx="2" fill="rgba(240,213,192,0.2)" transform="rotate(-20 366 236)"/>
+    </svg>
+    <div class="hero-deco-text">Bacolod City · Negros Occidental · Philippines</div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip fade-up">
+  <div class="about-strip-stat">
+    <div class="num">30+</div>
+    <div class="label">Years of Sweetness</div>
+  </div>
+  <div class="about-strip-divider"></div>
+  <div class="about-strip-stat">
+    <div class="num">4.4</div>
+    <div class="label">Tripadvisor Rating</div>
+  </div>
+  <div class="about-strip-divider"></div>
+  <div class="about-strip-stat">
+    <div class="num">#6</div>
+    <div class="label">Top Restaurant in Bacolod</div>
+  </div>
+  <div class="about-strip-divider"></div>
+  <div class="about-strip-quote">
+    "Calea was an institution with its cakes, confectionary and coffee attracting universal praise — a real oasis in Bacolod."
+  </div>
+</div>
+
+<!-- OUR STORY -->
+<section id="story">
+  <div class="section-label">Our Story</div>
+  <h2 class="section-title">Born from <em>Love</em> & Sugar</h2>
+  <div class="story-grid">
+    <div class="story-text fade-up">
+      <p>
+        Calea Pastries & Coffee was born from the heart of a mother and her love for her daughters — 
+        <strong>Carissa and Leanne</strong>. Owner <strong>Ging Consing</strong> named the café by blending their names, 
+        and that warmth has been baked into every cake ever since.
+      </p>
+      <p>
+        What began as a small, beloved bakeshop along Lacson Street has grown into one of 
+        Bacolod City's most iconic institutions. Locals swear by it. Tourists plan entire 
+        trips around it. First-timers in Bacolod are sent straight here.
+      </p>
+      <p>
+        Today, with branches across the city, Calea remains rooted in its original promise: 
+        <strong>real cakes, honestly made</strong> — thick with filling, rich in flavor, 
+        and priced so everyone can indulge.
+      </p>
+      <br/>
+      <a href="#menu" class="btn-primary">See What We Bake</a>
+    </div>
+    <div class="story-visual fade-up">
+      <div class="story-card main">
+        <!-- Illustrated pastries SVG -->
+        <svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+          <!-- Coffee cup -->
+          <rect x="190" y="170" width="90" height="60" rx="8" fill="#6b3d1e"/>
+          <ellipse cx="235" cy="170" rx="45" ry="12" fill="#7d4a24"/>
+          <ellipse cx="235" cy="167" rx="42" ry="10" fill="#3b1f0e"/>
+          <!-- Coffee foam -->
+          <ellipse cx="235" cy="167" rx="36" ry="8" fill="#c4813a" opacity="0.7"/>
+          <!-- Cup handle -->
+          <path d="M280 185 Q305 185 305 200 Q305 215 280 215" fill="none" stroke="#6b3d1e" stroke-width="8" stroke-linecap="round"/>
+          <!-- Saucer -->
+          <ellipse cx="235" cy="232" rx="55" ry="10" fill="#8a5030"/>
+          <!-- Steam -->
+          <path d="M215 155 Q210 140 215 125 Q220 110 215 95" fill="none" stroke="rgba(240,213,192,0.5)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M235 150 Q230 133 235 118" fill="none" stroke="rgba(240,213,192,0.4)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M255 155 Q260 138 255 122" fill="none" stroke="rgba(240,213,192,0.4)" stroke-width="2.5" stroke-linecap="round"/>
+
+          <!-- Slice of cake -->
+          <path d="M40 200 L120 120 L200 200 Z" fill="#8a5030"/>
+          <path d="M40 200 L120 120 L200 200 L190 220 L50 220 Z" fill="#6b3d1e"/>
+          <!-- Cream layers in slice -->
+          <path d="M55 210 L120 138 L185 210" fill="none" stroke="#f0d5c0" stroke-width="5" stroke-linecap="round"/>
+          <!-- Chocolate top -->
+          <path d="M75 180 Q120 155 165 180" fill="#3b1f0e" opacity="0.7"/>
+          <!-- Berry on top -->
+          <circle cx="120" cy="120" r="12" fill="#c0392b"/>
+          <path d="M120 115 Q115 105 120 100 Q125 105 120 115" fill="#8a9e7c"/>
+          <!-- Crumbs -->
+          <circle cx="50" cy="228" r="3" fill="#6b3d1e" opacity="0.6"/>
+          <circle cx="175" cy="235" r="2.5" fill="#6b3d1e" opacity="0.5"/>
+          <circle cx="100" cy="232" r="2" fill="#6b3d1e" opacity="0.4"/>
+
+          <!-- Fork -->
+          <rect x="150" y="200" width="4" height="60" rx="2" fill="#c4813a" opacity="0.6"/>
+          <rect x="142" y="200" width="4" height="20" rx="2" fill="#c4813a" opacity="0.6"/>
+          <rect x="158" y="200" width="4" height="20" rx="2" fill="#c4813a" opacity="0.6"/>
+          <rect x="150" y="197" width="12" height="4" fill="#c4813a" opacity="0.6"/>
+
+          <!-- Decorative dots -->
+          <circle cx="270" cy="130" r="6" fill="rgba(196,129,58,0.3)"/>
+          <circle cx="30" cy="140" r="8" fill="rgba(212,168,67,0.2)"/>
+          <circle cx="310" cy="240" r="5" fill="rgba(196,129,58,0.25)"/>
+        </svg>
+      </div>
+      <div class="story-card accent">
+        <span class="big">★ 4.4</span>
+        <span class="small">Tripadvisor<br>Rated</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="menu-section">
+  <div class="section-label">Our Signatures</div>
+  <h2 class="section-title">Every Bite <em>Tells</em> a Story</h2>
+  <div class="menu-grid">
+    <div class="menu-card fade-up">
+      <span class="menu-card-icon">🎂</span>
+      <div class="menu-card-name">Chocolate Mud Pie</div>
+      <p class="menu-card-desc">Legendary Oreo crust base, coffee ice cream filling, and a deep chocolate finish. The one cake that makes people fly to Bacolod.</p>
+      <span class="menu-card-tag bestseller">★ Bestseller</span>
+    </div>
+    <div class="menu-card fade-up">
+      <span class="menu-card-icon">🍰</span>
+      <div class="menu-card-name">White Chocolate Cheesecake</div>
+      <p class="menu-card-desc">Creamy, dreamy, and unapologetically indulgent. Staff-recommended and beloved by generations of Bacolodnons.</p>
+      <span class="menu-card-tag bestseller">★ Bestseller</span>
+    </div>
+    <div class="menu-card fade-up">
+      <span class="menu-card-icon">🫐</span>
+      <div class="menu-card-name">Blueberry Cheesecake</div>
+      <p class="menu-card-desc">A burst of fresh blueberry atop a rich, velvety cream cheese base. Perfect sweetness in every forkful.</p>
+      <span class="menu-card-tag">Must-Try</span>
+    </div>
+    <div class="menu-card fade-up">
+      <span class="menu-card-icon">🍫</span>
+      <div class="menu-card-name">Black Zambo Cake</div>
+      <p class="menu-card-desc">Rich, moist, and darkly chocolatey — a Calea classic that lives up to every rave review.</p>
+      <span class="menu-card-tag">Fan Favorite</span>
+    </div>
+    <div class="menu-card fade-up">
+      <span class="menu-card-icon">🥕</span>
+      <div class="menu-card-name">Carrot Cake</div>
+      <p class="menu-card-desc">Generously sliced, warmly spiced. Big enough to share — if you're feeling generous.</p>
+      <span class="menu-card-tag">Classic</span>
+    </div>
+    <div class="menu-card fade-up">
+      <span class="menu-card-icon">☕</span>
+      <div class="menu-card-name">Freshly Brewed Coffee</div>
+      <p class="menu-card-desc">Served with sugar on the side so you set the sweetness. The perfect companion to any slice.</p>
+      <span class="menu-card-tag">& Halo-Halo too</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="experience-section">
+  <div class="exp-header fade-up">
+    <div>
+      <div class="section-label">The Calea Experience</div>
+      <h2 class="section-title">More than Cake — <em>a Feeling</em></h2>
+    </div>
+    <p style="max-width:22rem; font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--text-light); line-height:1.7;">
+      Light blue walls, warm drop-down lamps, and a cozy nook decorated with framed cake prints. 
+      Calea wraps you in comfort the moment you step inside.
+    </p>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-cell tall">
+      <div class="exp-cell-inner">
+        <div class="exp-bg cell-1" style="position:absolute;inset:0;">
+          <div class="exp-cell-pattern"></div>
+          <svg viewBox="0 0 300 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;opacity:0.35;position:absolute;">
+            <!-- Cake tower illustration -->
+            <rect x="75" y="380" width="150" height="50" rx="6" fill="#c4813a"/>
+            <rect x="90" y="310" width="120" height="75" rx="6" fill="#d4a843"/>
+            <rect x="110" y="250" width="80" height="65" rx="6" fill="#c4813a"/>
+            <ellipse cx="150" cy="250" rx="40" ry="12" fill="#f0d5c0" opacity="0.6"/>
+            <ellipse cx="150" cy="310" rx="60" ry="14" fill="#f0d5c0" opacity="0.5"/>
+            <ellipse cx="150" cy="380" rx="75" ry="16" fill="#f0d5c0" opacity="0.4"/>
+            <circle cx="150" cy="240" r="15" fill="#c0392b" opacity="0.8"/>
+          </svg>
+        </div>
+        <div class="exp-label">The Famous Cakes</div>
+      </div>
+    </div>
+    <div class="exp-cell">
+      <div class="exp-cell-inner">
+        <div class="exp-bg cell-2" style="position:absolute;inset:0;"></div>
+        <div class="exp-cell-pattern" style="position:absolute;inset:0;opacity:0.15;"></div>
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:70%;opacity:0.6;position:absolute;">
+          <circle cx="100" cy="80" r="60" fill="rgba(59,31,14,0.5)"/>
+          <ellipse cx="100" cy="80" rx="55" ry="12" fill="rgba(240,213,192,0.3)" transform="translate(0,-50)"/>
+          <rect x="70" y="140" width="60" height="40" rx="5" fill="rgba(59,31,14,0.4)"/>
+          <ellipse cx="100" cy="185" rx="45" ry="8" fill="rgba(59,31,14,0.3)"/>
+        </svg>
+        <div class="exp-label">Artisan Coffee</div>
+      </div>
+    </div>
+    <div class="exp-cell">
+      <div class="exp-cell-inner">
+        <div class="exp-bg cell-3" style="position:absolute;inset:0;"></div>
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:70%;opacity:0.5;position:absolute;">
+          <rect x="30" y="50" width="140" height="100" rx="10" fill="rgba(59,31,14,0.2)"/>
+          <path d="M50 90 L100 50 L150 90" fill="rgba(196,129,58,0.4)"/>
+          <rect x="80" y="110" width="40" height="40" fill="rgba(59,31,14,0.2)"/>
+        </svg>
+        <div class="exp-label" style="color:var(--chocolate)">Cozy Interiors</div>
+      </div>
+    </div>
+    <div class="exp-cell">
+      <div class="exp-cell-inner">
+        <div class="exp-bg cell-4" style="position:absolute;inset:0;"></div>
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:60%;opacity:0.5;position:absolute;">
+          <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-dasharray="10 5"/>
+          <circle cx="100" cy="100" r="10" fill="rgba(255,255,255,0.6)"/>
+          <line x1="100" y1="100" x2="165" y2="60" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+          <line x1="100" y1="100" x2="100" y2="30" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+        </svg>
+        <div class="exp-label">Al Fresco Dining</div>
+      </div>
+    </div>
+    <div class="exp-cell">
+      <div class="exp-cell-inner">
+        <div class="exp-bg cell-5" style="position:absolute;inset:0;"></div>
+        <div class="exp-cell-pattern" style="position:absolute;inset:0;"></div>
+        <div style="text-align:center;z-index:2;">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.8rem;color:var(--gold);line-height:1.2;">"A must-visit for every traveler"</div>
+          <div style="font-family:'Jost',sans-serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.8rem;">— Tripadvisor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews-section">
+  <div class="section-label">What Guests Say</div>
+  <h2 class="section-title">Words from <em>Sweet</em> Hearts</h2>
+  <div class="reviews-grid">
+    <div class="review-card fade-up">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The chocolate mud pie is melt-in-your-mouth perfect. Rich, creamy, and balanced. I literally planned my Bacolod trip around coming here."</p>
+      <div class="review-author">— Google Review</div>
+    </div>
+    <div class="review-card fade-up">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Calea is Bacolod's cake paradise. Truly can't leave without tasting their pastries which are all sinfully delicious. Their cheesecakes are a must-try."</p>
+      <div class="review-author">— Tripadvisor Traveler</div>
+    </div>
+    <div class="review-card fade-up">
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text">"The pecan pie topped with ice cream was delicious and I doubt whether it will be bettered anywhere in these islands. A real classic combo."</p>
+      <div class="review-author">— Tripadvisor Review</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<div id="visit" class="visit-section">
+  <div class="visit-info">
+    <div class="section-label">Find Us</div>
+    <h2 class="section-title">Come <em>Taste</em> for Yourself</h2>
+    <div class="visit-detail">
+      <div class="visit-row">
+        <div class="visit-icon">📍</div>
+        <div class="visit-row-text">
+          <div class="label">Address</div>
+          <div class="value">Door G1-4 Balay Quince Commercial Building<br>15th Lacson Street, Bacolod City<br>Negros Occidental 6100, Philippines</div>
+        </div>
+      </div>
+      <div class="visit-row">
+        <div class="visit-icon">🕙</div>
+        <div class="visit-row-text">
+          <div class="label">Hours</div>
+          <div class="value">9:00 AM – 11:00 PM Daily<br><span style="font-size:0.85rem;opacity:0.7;">Mornings are quieter; evenings tend to fill up</span></div>
+        </div>
+      </div>
+      <div class="visit-row">
+        <div class="visit-icon">📞</div>
+        <div class="visit-row-text">
+          <div class="label">Phone</div>
+          <div class="value">(034) 435-8413</div>
+        </div>
+      </div>
+      <div class="visit-row">
+        <div class="visit-icon">🏦</div>
+        <div class="visit-row-text">
+          <div class="label">Payment</div>
+          <div class="value">Accepts Credit Cards · Take-Out · Delivery Available</div>
+        </div>
+      </div>
+    </div>
+    <br/><br/>
+    <a href="https://maps.google.com/?q=Calea+Pastries+Coffee+Bacolod" target="_blank" class="btn-primary" style="margin-top: 24px;" >Open in Google Maps</a>
+  </div>
+  <div class="visit-map">
+    <!-- Stylized map illustration -->
+    <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;">
+      <!-- Grid streets -->
+      <line x1="0" y1="150" x2="500" y2="150" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="0" y1="250" x2="500" y2="250" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="0" y1="350" x2="500" y2="350" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="0" y1="450" x2="500" y2="450" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="100" y1="0" x2="100" y2="600" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="200" y1="0" x2="200" y2="600" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="300" y1="0" x2="300" y2="600" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="400" y1="0" x2="400" y2="600" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+      <!-- Lacson Street highlight -->
+      <rect x="172" y="0" width="44" height="600" fill="rgba(196,129,58,0.12)"/>
+      <text x="194" y="78" fill="rgba(196,129,58,0.45)" font-size="10" text-anchor="middle" font-family="Jost,sans-serif" letter-spacing="2" transform="rotate(-90 194 78)">LACSON ST</text>
+
+      <!-- 15th Street diagonal -->
+      <rect x="-130" y="255" width="720" height="58" fill="rgba(196,129,58,0.2)" transform="rotate(0 280 180)"/>
+      <rect x="-130" y="283" width="780" height="2" fill="rgba(255,255,255,0.14)" transform="rotate(0 280 180)"/>
+  
+      <text x="275" y="285" fill="rgba(255,255,255,0.55)" font-size="11" text-anchor="middle" font-family="Jost,sans-serif" letter-spacing="1.8" transform="rotate(0 275 285)">15TH ST</text>
+
+
+      <!-- Location pin moved beside the street -->
+      <circle cx="255" cy="352" r="40" fill="rgba(196,129,58,0.15)" stroke="var(--caramel)" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <circle cx="255" cy="352" r="20" fill="var(--caramel)" opacity="0.92"/>
+      <text x="255" y="359" fill="white" font-size="18" text-anchor="middle">&#127856;</text>
+      <circle cx="255" cy="352" r="55" fill="none" stroke="var(--caramel)" stroke-width="0.8" opacity="0.4"/>
+
+      <!-- Label under marker -->
+      <text x="255" y="408" fill="var(--gold)" font-size="26" text-anchor="middle" font-family="Playfair Display,serif" font-style="italic">We're on Lacson St.</text>
+      <text x="255" y="430" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="middle" font-family="Jost,sans-serif" letter-spacing="2">BALAY QUINCE · 15TH STREET</text>
+    </svg>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Calea Pastries & Coffee</div>
+  <div>"Because Life is Sweeter in Bacolod" · Est. Bacolod City, Negros Occidental</div>
+  <div>
+    <a href="https://maps.google.com/?q=Calea+Pastries+Coffee+Bacolod" target="_blank">(034) 435-8413</a>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, (entry.target.dataset.delay || 0) * 120);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach((el, i) => {
+    el.dataset.delay = i % 4;
+    observer.observe(el);
+  });
+
+  // Staggered menu cards
+  document.querySelectorAll('.menu-card').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 0.08}s`;
+  });
+
+  // Mobile nav toggle
+  const nav = document.querySelector('nav');
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  const closeMenu = () => {
+    nav.classList.remove('menu-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  };
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('menu-open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Smooth scrolling with fixed-nav offset
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const hash = link.getAttribute('href');
+      if (!hash || hash === '#') return;
+
+      const target = document.querySelector(hash);
+      if (!target) return;
+
+      event.preventDefault();
+      const offset = nav.offsetHeight + 14;
+      const targetTop = window.scrollY + target.getBoundingClientRect().top - offset;
+      window.scrollTo({
+        top: Math.max(targetTop, 0),
+        behavior: 'smooth'
+      });
+      closeMenu();
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 960) closeMenu();
+  });
+</script>
+</body>
+</html>
